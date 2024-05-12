@@ -20,7 +20,7 @@ function f() {
   } else if (flag == 3) {
     Bn.style.top = 525;
 
-    Bn.style.left = 166;
+    Bn.style.left = 200;
 
     flag = 1;
   }

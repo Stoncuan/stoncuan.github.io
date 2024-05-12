@@ -18,10 +18,22 @@ body {
     padding: 5px;
 }
 
-.posisiTombol {
+.posisiTombol1 {
+    position: absolute;
+    left: 50px;
+    top: 420px;
+    width: 210px;
+    height: 210px;
+}
+
+.posisiTombol2 {
     position: absolute;
     left: 50px;
     top: 450px;
     width: 210px;
     height: 210px;
+}
+
+.posisi {
+    margin: auto;
 }
