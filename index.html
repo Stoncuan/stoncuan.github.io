@@ -1,37 +1,493 @@
-<html>
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>For My Beloved ❤️</title>
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@400;600&display=swap");
 
-<title> Maafin aku ya! </title>
+        :root {
+            --primary: #ff6b81;
+            --secondary: #ffa3b4;
+            --accent: #ffccd5;
+            --dark: #4a4a4a;
+            --light: #fff9fb;
+        }
 
-<script type="text/javascript" src="./js/scirpt.js"></script>
-<link rel="stylesheet" href="./css/style.css">
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            background: linear-gradient(-45deg, #ffccd5, #ffb3c6, #ff8fab, #ff758f);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+            font-family: "Montserrat", sans-serif;
+            color: var(--dark);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            width: 90%;
+            max-width: 800px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            backdrop-filter: blur(5px);
+        }
+
+        h1 {
+            font-family: "Dancing Script", cursive;
+            color: var(--primary);
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .photo-carousel {
+            width: 300px;
+            height: 300px;
+            margin: 20px auto;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            position: relative;
+            border: 5px solid white;
+        }
+
+        .carousel-inner {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            transition: transform 1s ease-in-out;
+        }
+
+        .carousel-item {
+            min-width: 100%;
+            height: 100%;
+            position: relative;
+            opacity: 0;
+            animation: fadeInZoom 1s forwards;
+        }
+
+        .carousel-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 0.5s ease;
+        }
+
+        @keyframes fadeInZoom {
+            0% { opacity: 0; transform: scale(0.9); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        .carousel-control {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(255, 255, 255, 0.5);
+            color: var(--primary);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .carousel-control:hover {
+            background-color: rgba(255, 107, 129, 0.8);
+            color: white;
+        }
+
+        .carousel-prev { left: 10px; }
+        .carousel-next { right: 10px; }
+
+        .carousel-indicators {
+            position: absolute;
+            bottom: 10px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            z-index: 2;
+        }
+
+        .indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .indicator.active {
+            background-color: var(--primary);
+            transform: scale(1.3);
+        }
+
+        .message-container {
+            min-height: 150px;
+            margin: 20px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .message {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            text-align: center;
+            font-weight: 500;
+            overflow: hidden;
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 8px;
+            height: 1rem;
+            background-color: var(--primary);
+            margin-left: 2px;
+            animation: blink 0.7s infinite;
+            vertical-align: middle;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        .music-control {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            z-index: 10;
+            transition: all 0.3s ease;
+        }
+
+        .music-control:hover { transform: scale(1.1); }
+        .music-control i { font-size: 1.5rem; }
+
+        .hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 20px;
+            color: var(--primary);
+            animation: float 5s linear infinite;
+            opacity: 0;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 2.2rem; }
+            .photo-carousel { width: 250px; height: 250px; }
+            .container { padding: 20px; }
+        }
+
+        .apology-button {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+        }
+
+        .apology-button:hover {
+            background-color: rgba(255, 107, 129, 0.8);
+        }
+
+        .forgive-buttons {
+            display: none;
+            margin-top: 20px;
+        }
+
+        .forgive-button {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 1rem;
+            cursor: pointer;
+            margin: 0 10px;
+            transition: background-color 0.3s;
+        }
+
+        .forgive-button:hover {
+            background-color: rgba(255, 107, 129, 0.8);
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
 </head>
-
 <body>
+    <div class="hearts" id="hearts"></div>
 
-<div class="posisi">
-    <h1 class="maaf"> MAAFIN AKU YA! <h1>
-
-        <div class="tenor-gif-embed" data-postid="22250621" data-share-method="host" data-aspect-ratio="1" data-width="250"><a href="https://tenor.com/view/peach-cat-cute-sparkle-gif-22250621">Peach Cat Cute GIF</a>from <a href="https://tenor.com/search/peach+cat-gifs">Peach Cat GIFs</a></div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
-    
-    
-    <h1 class="maaf">Halo Putri Aku Minta Maaf</h1>
-    
-    <div id="By" class="posisiTombol1" >
-    
-    <input class="tombol" type="button" value=" YA " onClick="f1()" />
-    
+    <div class="music-control" id="music-control">
+        <i class="fas fa-play" id="play-icon"></i>
     </div>
-    
-    <div ID="Bn" class="posisiTombol2">
-    
-    <input class="tombol" type="button" value=" TIDAK " onMouseOver="f()" />
-    
-    </div>
-</div>
+    <audio id="bg-music" loop>
+        <source src="sound/lagu.mp3" type="audio/mpeg" />
+    </audio>
 
+    <div class="container">
+        <h1>Lovee youuuu sayanggkuuu</h1>
+
+        <div class="photo-carousel">
+            <div class="carousel-inner" id="carousel-inner">
+                <div class="carousel-item">
+                    <img src="Img/gambar1.jpg" alt="Photo 1" />
+                </div>
+                <div class="carousel-item">
+                    <img src="Img/gambar2.jpg" alt="Photo 2" />
+                </div>
+                <div class="carousel-item">
+                    <img src="Img/gambar3.jpg" alt="Photo 3" />
+                </div>
+                <div class="carousel-item">
+                    <img src="Img/gambar4.jpg" alt="Photo 4" />
+                </div>
+                <div class="carousel-item">
+                    <img src="Img/gambar5.jpg" alt="Photo 5" />
+                </div>
+                <div class="carousel-item">
+                    <img src="Img/gambar6.jpg" alt="Photo 5" />
+                </div>
+                <div class="carousel-item">
+                    <img src="Img/gambar7.jpg" alt="Photo 5" />
+                </div>
+                <div class="carousel-item">
+                    <img src="Img/gambar8.jpg" alt="Photo 5" />
+                </div>
+                <div class="carousel-item">
+                    <img src="Img/gambar9.jpg" alt="Photo 5" />
+                </div>
+                <div class="carousel-item">
+                    <img src="Img/gambar10.jpg" alt="Photo 5" />
+                </div>
+                <div class="carousel-item">
+                    <img src="Img/IMG-20250117-WA0014.jpg" alt="Photo 5" />
+                </div>
+            </div>
+
+            <button class="carousel-control carousel-prev" id="carousel-prev">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="carousel-control carousel-next" id="carousel-next">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+
+            <div class="carousel-indicators" id="carousel-indicators">
+                <div class="indicator active"></div>
+                <div class="indicator"></div>
+                <div class="indicator"></div>
+                <div class="indicator"></div>
+                <div class="indicator"></div>
+                <div class="indicator"></div>
+                <div class="indicator"></div>
+                <div class="indicator"></div>
+                <div class="indicator"></div>
+                <div class="indicator"></div>
+                <div class="indicator"></div>
+            </div>
+        </div>
+
+        <div class="message-container">
+            <p class="message" id="message"></p>
+            <span class="cursor" id="cursor"></span>
+        </div>
+
+        <button class="apology-button" id="apology-button">Maaf yahh sayannggkkuu</button>
+        <div class="forgive-buttons" id="forgive-buttons">
+            <button class="forgive-button" id="forgive-button">Iya</button>
+            <button class="forgive-button" id="not-forgive-button">Tidak</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const musicControl = document.getElementById("music-control");
+            const bgMusic = document.getElementById("bg-music");
+            const playIcon = document.getElementById("play-icon");
+            let musicPlaying = false;
+
+            musicControl.addEventListener("click", function () {
+                if (musicPlaying) {
+                    bgMusic.pause();
+                    playIcon.classList.remove("fa-pause");
+                    playIcon.classList.add("fa-play");
+                } else {
+                    bgMusic.play().catch((e) => console.log("Auto-play prevented: ", e));
+                    playIcon.classList.remove("fa-play");
+                    playIcon.classList.add("fa-pause");
+                }
+                musicPlaying = !musicPlaying;
+            });
+
+            // Background hearts animation
+            function createHeart() {
+                const heart = document.createElement("div");
+                heart.classList.add("heart");
+                heart.innerHTML = "❤️";
+                heart.style.left = Math.random() * 100 + "vw";
+                heart.style.animationDuration = Math.random() * 3 + 5 + "s";
+                heart.style.fontSize = Math.random() * 20 + 10 + "px";
+
+                document.getElementById("hearts").appendChild(heart);
+
+                setTimeout(() => {
+                    heart.remove();
+                }, 5000);
+            }
+
+            setInterval(createHeart, 300);
+
+            // Carousel functionality
+            const carouselInner = document.getElementById("carousel-inner");
+            const items = document.querySelectorAll(".carousel-item");
+            const prevBtn = document.getElementById("carousel-prev");
+            const nextBtn = document.getElementById("carousel-next");
+            const indicators = document.querySelectorAll(".indicator");
+            let currentIndex = 0;
+            const itemCount = items.length;
+
+            function updateCarousel() {
+                carouselInner.style.transform = `translateX(-${currentIndex * 100}%)`;
+
+                // Update indicators
+                indicators.forEach((indicator, index) => {
+                    if (index === currentIndex) {
+                        indicator.classList.add("active");
+                    } else {
+                        indicator.classList.remove("active");
+                    }
+                });
+            }
+
+            function nextSlide() {
+                currentIndex = (currentIndex + 1) % itemCount;
+                updateCarousel();
+                showMessage();
+            }
+
+            function prevSlide() {
+                currentIndex = (currentIndex - 1 + itemCount) % itemCount;
+                updateCarousel();
+                showMessage();
+            }
+
+            nextBtn.addEventListener("click", nextSlide);
+            prevBtn.addEventListener("click", prevSlide);
+
+            // Indicator clicks
+            indicators.forEach((indicator, index) => {
+                indicator.addEventListener("click", () => {
+                    currentIndex = index;
+                    updateCarousel();
+                    showMessage();
+                });
+            });
+
+            // Messages
+            const messages = [
+                "Sayangkuu, cintaku, duniaku, princesku, cantiku, My wifiku...",
+                "Maaf yah sayang untuk semua gebrakanya..",
+                "Pasti sayangg cape yah dengan banyak hal...",
+                "Makasih juga yah sayang sudah selalu mau maafkan aku...",
+                "Di hatinya akuu yang palingg dalamm...",
+                "Cuman ada sayangggkuu dan juga mamakuuu",
+                "Maaf yah sayang udah buat sayang memendam semuanya...",
+                "Maaf juga sayang atas hal aneh yang sayang benci..",
+                "Aku akan selalu berusaha menjadi yang sayangg mauu dan menjadi yang terbaik buattt sayangg",
+                "Kamu udah menjadi tujuanya aku kedepanya kok sayangg...",
+                "Lovee youuu sayannggkuuu"
+            ];
+
+            const messageElement = document.getElementById("message");
+
+            function showMessage() {
+                messageElement.textContent = messages[currentIndex];
+            }
+
+            // Start with the first message
+            showMessage();
+
+            // Apology button functionality
+            const apologyButton = document.getElementById("apology-button");
+            const forgiveButtons = document.getElementById("forgive-buttons");
+
+            apologyButton.addEventListener("click", function () {
+                forgiveButtons.style.display = "flex";
+                apologyButton.style.display = "none";
+            });
+
+            const forgiveButton = document.getElementById("forgive-button");
+            const notForgiveButton = document.getElementById("not-forgive-button");
+
+            forgiveButton.addEventListener("click", function () {
+                alert("Makasihhh yahh sayannggkkuu! ❤️");
+            });
+
+            notForgiveButton.addEventListener("click", function () {
+                alert("Ndakkk mauuu pokonyaa di maafkannnn");
+            });
+        });
+    </script>
 </body>
-
 </html>
