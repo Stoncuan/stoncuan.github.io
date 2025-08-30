@@ -1,680 +1,405 @@
 <!DOCTYPE html>
 <html lang="id">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Selamat Ulang Tahun Sayangku! ❤️</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selamat Ulang Tahun!</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap"
-      rel="stylesheet"
-    />
     <style>
-      body {
-        font-family: "Poppins", sans-serif;
-        min-height: 100vh;
-        overflow-x: hidden;
-        position: relative;
-      }
-
-      /* Dynamic Background */
-      .background-gradient {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(
-          135deg,
-          #667eea 0%,
-          #764ba2 20%,
-          #ff6b6b 40%,
-          #f0932b 60%,
-          #4ecdc4 80%,
-          #45b7d1 100%
-        );
-        background-size: 400% 400%;
-        animation: gradientFlow 15s ease infinite;
-        z-index: -3;
-      }
-
-      @keyframes gradientFlow {
-        0%,
-        100% {
-          background-position: 0% 50%;
+        @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        50% {
-          background-position: 100% 50%;
+        
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
         }
-      }
-
-      /* Particles Background */
-      .particles {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -2;
-      }
-
-      .particle {
-        position: absolute;
-        border-radius: 50%;
-        background: rgba(255, 255, 255, 0.1);
-        animation: floatParticle 20s infinite linear;
-      }
-
-      @keyframes floatParticle {
-        0% {
-          transform: translateY(100vh) scale(0);
-          opacity: 0;
+        
+        .birthday-text {
+            font-family: 'Pacifico', cursive;
         }
-        10% {
-          opacity: 0.3;
+        
+        .slider-container {
+            position: relative;
+            max-width: 600px;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
         }
-        90% {
-          opacity: 0.3;
+        
+        .slider {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
         }
-        100% {
-          transform: translateY(-100px) scale(1.5);
-          opacity: 0;
+        
+        .slide {
+            min-width: 100%;
+            height: 400px;
+            position: relative;
         }
-      }
-
-      /* Floating Stars */
-      .floating-star {
-        position: absolute;
-        background: rgba(255, 255, 255, 0.8);
-        border-radius: 50%;
-        animation: twinkle 3s infinite alternate;
-        z-index: -1;
-      }
-
-      @keyframes twinkle {
-        0%,
-        100% {
-          opacity: 0.2;
-          transform: scale(0.8);
+        
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 20px;
         }
-        50% {
-          opacity: 1;
-          transform: scale(1.2);
+        
+        .slide-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: white;
+            padding: 20px;
+            text-align: center;
         }
-      }
-
-      /* Floating Hearts Background */
-      .floating-heart-bg {
-        position: absolute;
-        font-size: 2rem;
-        animation: floatHeart 15s infinite linear;
-        z-index: -1;
-        opacity: 0.1;
-      }
-
-      @keyframes floatHeart {
-        0% {
-          transform: translateY(100vh) rotate(0deg);
-          opacity: 0;
+        
+        .slider-controls {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px 0;
         }
-        10% {
-          opacity: 0.1;
+        
+        .slider-btn {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.5);
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
         }
-        90% {
-          opacity: 0.1;
+        
+        .slider-btn.active {
+            background: #ff6b6b;
+            transform: scale(1.2);
         }
-        100% {
-          transform: translateY(-100px) rotate(360deg);
-          opacity: 0;
+        
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background: #ff0000;
+            opacity: 0.8;
+            border-radius: 0;
+            animation: fall linear forwards;
         }
-      }
-
-      /* Glass Morphism Effect */
-      .glass-effect {
-        background: rgba(255, 255, 255, 0.15);
-        backdrop-filter: blur(12px);
-        border: 1px solid rgba(255, 255, 255, 0.2);
-      }
-
-      .romantic-font {
-        font-family: "Dancing Script", cursive;
-      }
-
-      .heart {
-        position: fixed;
-        font-size: 1.5rem;
-        animation: fall 8s linear forwards;
-        color: #ff6b6b;
-        z-index: 1000;
-      }
-
-      @keyframes fall {
-        0% {
-          transform: translateY(-100px) rotate(0deg);
-          opacity: 1;
+        
+        @keyframes fall {
+            to {
+                transform: translateY(100vh) rotate(720deg);
+                opacity: 0;
+            }
         }
-        100% {
-          transform: translateY(100vh) rotate(360deg);
-          opacity: 0;
+        
+        .bubble {
+            position: fixed;
+            background: rgba(255,255,255,0.7);
+            border-radius: 50%;
+            animation: float linear infinite;
         }
-      }
-
-      .photo-gallery img {
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        border: 2px solid rgba(255, 255, 255, 0.1);
-      }
-
-      .photo-gallery img:hover {
-        transform: scale(1.05) rotate(1deg);
-        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
-        border-color: rgba(255, 255, 255, 0.3);
-      }
-
-      .message-card {
-        background: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(20px);
-        border-radius: 20px;
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        transition: all 0.4s ease;
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-      }
-
-      .message-card:hover {
-        transform: translateY(-8px) scale(1.02);
-        box-shadow: 0 35px 60px rgba(0, 0, 0, 0.25);
-      }
-
-      .confetti {
-        position: absolute;
-        width: 10px;
-        height: 10px;
-        background: #ff6b6b;
-        animation: confetti-fall 5s linear forwards;
-      }
-
-      @keyframes confetti-fall {
-        0% {
-          transform: translateY(-100px) rotate(0deg);
-          opacity: 1;
+        
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) scale(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) scale(1.5);
+                opacity: 0;
+            }
         }
-        100% {
-          transform: translateY(100vh) rotate(720deg);
-          opacity: 0;
+        
+        .heart {
+            position: fixed;
+            color: #ff6b6b;
+            animation: heartFloat linear infinite;
+            pointer-events: none;
         }
-      }
-
-      .floating-hearts {
-        animation: float 3s ease-in-out infinite;
-      }
-
-      @keyframes float {
-        0%,
-        100% {
-          transform: translateY(0px);
+        
+        @keyframes heartFloat {
+            0% {
+                transform: translateY(100vh) scale(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) scale(1.5) rotate(360deg);
+                opacity: 0;
+            }
         }
-        50% {
-          transform: translateY(-20px);
+        
+        .message-container {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 30px auto;
+            max-width: 600px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         }
-      }
-
-      /* Parallax Effect */
-      .parallax-bg {
-        background-attachment: fixed;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-      }
-
-      /* Shimmer Effect */
-      .shimmer {
-        background: linear-gradient(
-          90deg,
-          transparent,
-          rgba(255, 255, 255, 0.2),
-          transparent
-        );
-        background-size: 200% 100%;
-        animation: shimmerEffect 2s infinite;
-      }
-
-      @keyframes shimmerEffect {
-        0% {
-          background-position: -200% 0;
+        
+        .cake-animation {
+            text-align: center;
+            font-size: 3rem;
+            animation: pulse 2s infinite;
         }
-        100% {
-          background-position: 200% 0;
+        
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
         }
-      }
+        
+        .birthday-btn {
+            background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3);
+        }
+        
+        .birthday-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 107, 107, 0.4);
+        }
+        
+        .birthday-btn:active {
+            transform: translateY(0);
+        }
     </style>
-  </head>
-  <body class="text-white">
-    <!-- Background Elements -->
-    <div class="background-gradient"></div>
-    <div class="particles" id="particles"></div>
-    <div class="floating-stars" id="floating-stars"></div>
-    <div class="floating-hearts-bg" id="floating-hearts-bg"></div>
-
-    <!-- Background Music -->
-    <audio id="bgMusic" loop>
-      <source
-        src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
-        type="audio/mpeg"
-      />
-    </audio>
-
-    <!-- Confetti Container -->
-    <div id="confetti-container"></div>
-
-    <!-- Header Section -->
-    <header class="text-center py-20 relative overflow-hidden">
-      <div class="glass-effect absolute inset-0"></div>
-      <div class="relative z-10 max-w-4xl mx-auto px-4">
-        <h1
-          class="text-5xl md:text-7xl font-bold romantic-font mb-4 text-shadow-lg drop-shadow-2xl"
-        >
-          Selamat Ulang Tahun Sayanggkuu
+</head>
+<body class="min-h-screen flex flex-col items-center justify-center py-8 px-4">
+    <!-- Particle Container -->
+    <div id="particle-container"></div>
+    
+    <div class="text-center mb-8">
+        <h1 class="birthday-text text-5xl md:text-6xl font-bold text-white mb-4">
+            🎂 Selamat Ulang Tahun! 🎉
         </h1>
-        <p class="text-2xl md:text-3xl mb-8 font-light">Untuk Yang Tercinta</p>
-        <div class="floating-hearts inline-block">
-          <span class="text-4xl shimmer px-4 py-2 rounded-full">💖</span>
-        </div>
-      </div>
-    </header>
+        <p class="text-xl text-white opacity-90">Semoga bertambah bahagia dan sukses selalu!</p>
+    </div>
 
-    <!-- Main Content -->
-    <main class="max-w-6xl mx-auto px-4 py-12 relative z-10">
-      <!-- Countdown Timer -->
-      <section class="text-center mb-16">
-        <h2
-          class="text-3xl font-semibold mb-8 glass-effect inline-block px-8 py-4 rounded-full"
-        >
-          Countdown Menuju Hari Spesialmu
-        </h2>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-2xl mx-auto">
-          <div
-            class="glass-effect rounded-2xl p-6 transform hover:scale-105 transition-transform duration-300"
-          >
-            <div class="text-5xl font-bold text-shadow" id="days">00</div>
-            <div class="text-sm uppercase tracking-wider mt-2">Hari</div>
-          </div>
-          <div
-            class="glass-effect rounded-2xl p-6 transform hover:scale-105 transition-transform duration-300"
-          >
-            <div class="text-5xl font-bold text-shadow" id="hours">00</div>
-            <div class="text-sm uppercase tracking-wider mt-2">Jam</div>
-          </div>
-          <div
-            class="glass-effect rounded-2xl p-6 transform hover:scale-105 transition-transform duration-300"
-          >
-            <div class="text-5xl font-bold text-shadow" id="minutes">00</div>
-            <div class="text-sm uppercase tracking-wider mt-2">Menit</div>
-          </div>
-          <div
-            class="glass-effect rounded-2xl p-6 transform hover:scale-105 transition-transform duration-300"
-          >
-            <div class="text-5xl font-bold text-shadow" id="seconds">00</div>
-            <div class="text-sm uppercase tracking-wider mt-2">Detik</div>
-          </div>
+    <!-- Photo Slider -->
+    <div class="slider-container mb-8">
+        <div class="slider" id="slider">
+            <div class="slide">
+                <img src="gambar1.jpg" alt="Foto kenangan bersama teman-teman tersenyum dengan balon ulang tahun di latar belakang" />
+                <div class="slide-caption">
+                    <h3 class="text-xl font-semibold">Aw aw imutt cekaliii</h3>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="gambar2.jpg" alt="Momen potong kue ulang tahun dengan lilin menyala dan wajah bahagia" />
+                <div class="slide-caption">
+                    <h3 class="text-xl font-semibold">Lihat apa yahh</h3>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="gambar3.jpg" alt="Kelompok teman mengangkat gelas untuk bersulang dengan suasana pesta yang meriah" />
+                <div class="slide-caption">
+                    <h3 class="text-xl font-semibold">Oke Sip</h3>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="gambar4.jpg" alt="Kelompok teman mengangkat gelas untuk bersulang dengan suasana pesta yang meriah" />
+                <div class="slide-caption">
+                    <h3 class="text-xl font-semibold">Cantikk bangetttt sii sayanggku ini</h3>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="gambar5.jpg" alt="Kelompok teman mengangkat gelas untuk bersulang dengan suasana pesta yang meriah" />
+                <div class="slide-caption">
+                    <h3 class="text-xl font-semibold">Aw aw sangat angun cekali cayangkuu ini</h3>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="gambar6.jpg" alt="Kelompok teman mengangkat gelas untuk bersulang dengan suasana pesta yang meriah" />
+                <div class="slide-caption">
+                    <h3 class="text-xl font-semibold">Kalo ini sihh imutt</h3>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="gambar7.jpg" alt="Kelompok teman mengangkat gelas untuk bersulang dengan suasana pesta yang meriah" />
+                <div class="slide-caption">
+                    <h3 class="text-xl font-semibold">Aw aw bubbkuu</h3>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="gambar8.jpg" alt="Kelompok teman mengangkat gelas untuk bersulang dengan suasana pesta yang meriah" />
+                <div class="slide-caption">
+                    <h3 class="text-xl font-semibold">Ciumm aku dongg</h3>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="gambar9.jpg" alt="Kelompok teman mengangkat gelas untuk bersulang dengan suasana pesta yang meriah" />
+                <div class="slide-caption">
+                    <h3 class="text-xl font-semibold">Okee sipp lagii</h3>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="gambar10.jpg" alt="Kelompok teman mengangkat gelas untuk bersulang dengan suasana pesta yang meriah" />
+                <div class="slide-caption">
+                    <h3 class="text-xl font-semibold">astaghfirullah ukhti</h3>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="gambar11.jpg" alt="Kelompok teman mengangkat gelas untuk bersulang dengan suasana pesta yang meriah" />
+                <div class="slide-caption">
+                    <h3 class="text-xl font-semibold">Tegaaa bangett kamuu bububb</h3>
+                </div>
+            </div>
         </div>
-      </section>
-
-      <!-- Love Messages -->
-      <section class="mb-16">
-        <h2
-          class="text-3xl font-semibold text-center mb-12 glass-effect inline-block px-8 py-4 rounded-full"
-        >
-          Pesan Cinta Untukmu
-        </h2>
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <div class="message-card p-8">
-            <div class="text-5xl mb-6 text-center">💝</div>
-            <h3 class="text-xl font-semibold mb-4 text-pink-600 text-center">
-              Cinta Pertama
-            </h3>
-            <p class="text-gray-700 text-center leading-relaxed">
-              Makasih yahh sayangkuu udah mau sayangg akuu sampai saat ini.
-              Terima kasih sudah menjadi bagian dari cerita hidupku.
-            </p>
-          </div>
-          <div class="message-card p-8">
-            <div class="text-5xl mb-6 text-center">🌟</div>
-            <h3 class="text-xl font-semibold mb-4 text-yellow-600 text-center">
-              Bintangku
-            </h3>
-            <p class="text-gray-700 text-center leading-relaxed">
-              Kamu adalah bintang yang menerangi hidupku di malam yang gelap.
-              Selalu bersinar terang, sayanggkuuu!
-            </p>
-          </div>
-          <div class="message-card p-8">
-            <div class="text-5xl mb-6 text-center">🌹</div>
-            <h3 class="text-xl font-semibold mb-4 text-red-600 text-center">
-              Keindahan
-            </h3>
-            <p class="text-gray-700 text-center leading-relaxed">
-              Seindah mawar di taman, secantik bintang di langit, itulah kamu di
-              mataku. Selamat ulang tahunnn!
-            </p>
-          </div>
+        <div class="slider-controls" id="slider-controls">
+            <button class="slider-btn active"></button>
+            <button class="slider-btn"></button>
+            <button class="slider-btn"></button>
+            <button class="slider-btn"></button>
+            <button class="slider-btn"></button>
+            <button class="slider-btn"></button>
+            <button class="slider-btn"></button>
+            <button class="slider-btn"></button>
+            <button class="slider-btn"></button>
+            <button class="slider-btn"></button>
+            <button class="slider-btn"></button>
         </div>
-      </section>
+    </div>
 
-      <!-- Photo Gallery -->
-      <section class="mb-16">
-        <h2
-          class="text-3xl font-semibold text-center mb-12 glass-effect inline-block px-8 py-4 rounded-full"
-        >
-          Lovee Youuu Sayangkuuu
-        </h2>
-        <div
-          class="photo-gallery grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-        >
-          <div class="rounded-2xl overflow-hidden glass-effect p-2">
-            <img
-              src="gambar1.jpg"
-              alt="Pasangan sedang berjalan di pantai saat senja dengan latar belakang matahari terbenam yang romantis"
-              class="w-full h-72 object-cover rounded-xl"
-            />
-          </div>
-          <div class="rounded-2xl overflow-hidden glass-effect p-2">
-            <img
-              src="gambar2.jpg"
-              alt="Momen candid pasangan tertawa bersama di kafe dengan latar belakang kota yang hidup"
-              class="w-full h-72 object-cover rounded-xl"
-            />
-          </div>
-          <div class="rounded-2xl overflow-hidden glass-effect p-2">
-            <img
-              src="gambar3.jpg"
-              alt="Pasangan memegang tangan sambil melihat pemandangan gunung yang megah dan hijau"
-              class="w-full h-72 object-cover rounded-xl"
-            />
-          </div>
-          <div class="rounded-2xl overflow-hidden glass-effect p-2">
-            <img
-              src="gambar4.jpg"
-              alt="Momen romantis pasangan berdansa di bawah lampu string lights yang hangat"
-              class="w-full h-72 object-cover rounded-xl"
-            />
-          </div>
-          <div class="rounded-2xl overflow-hidden glass-effect p-2">
-            <img
-              src="gambar5.jpg"
-              alt="Selfie pasangan dengan latar belakang kota malam yang berkilauan"
-              class="w-full h-72 object-cover rounded-xl"
-            />
-          </div>
-          <div class="rounded-2xl overflow-hidden glass-effect p-2">
-            <img
-              src="gambar6.jpg"
-              alt="Pasangan berfoto bersama dengan kue ulang tahun dan lilin yang menyala"
-              class="w-full h-72 object-cover rounded-xl"
-            />
-          </div>
+    <!-- Birthday Messages -->
+    <div class="message-container">
+        <div class="cake-animation">🎂✨</div>
+        <h2 class="text-2xl font-bold text-center text-pink-600 mb-4">Lovee youu sayanggkuu</h2>
+        <div class="space-y-4 text-gray-700">
+            <p class="text-center italic">"Di hari spesial ini sayanggku, semoga setiap langkahnya selalu dibimbing oleh cahaya kebahagiaan dan kesuksesan Aminn, Kan ada akuu sayangg, Maaf yahh
+                sayangkuu terkadang membuat sayang sedih, cape dan muakk, Aku tau aku selalu minta maaf, tapi aku ndk akan selalu membuat sayangg berada di posisi seperti itu kok sayangkuu, Lovee Youu Sayanggkuu</p>
+            <p class="text-center">Selamat merayakan hari kelahiranmu! Semoga tahun ini membawa lebih banyak kebahagiaan, kesuksesan, dan petualangan baru, Makasih yahh sayangkkuu udah mau selalu memafkan 
+                setiap kesalahnya aku.</p>
+            <p class="text-center font-semibold">Tetap semangat dan jaga kesehatan selalu yahh cintakuu, Aku sayanggg bangetttt samaa kamuu,
+                Sampai kapanpun kamu adalah sayangnya aku yang cantikk, imutt, lucu dan menggemaskan! 🎊</p>
         </div>
-      </section>
+    </div>
 
-      <!-- Special Message -->
-      <section class="text-center mb-16">
-        <div
-          class="glass-effect rounded-3xl p-12 max-w-3xl mx-auto transform hover:scale-102 transition-transform duration-500"
-        >
-          <h2 class="text-3xl md:text-4xl font-semibold mb-8 romantic-font">
-            Untuk Sayanggnya akuuu yang Paling akuu sayangg dan cintaa baangett
-          </h2>
-          <p class="text-xl md:text-2xl leading-relaxed text-white">
-            Selamat ulang tahun, cintaku! Semoga hari ini penuh dengan
-            kebahagiaan, cinta, dan kejutan indah. Aku bersyukur memiliki kamu
-            dalam hidupku. Terima kasih sudah menjadi dirimu yang luar biasa.
-            Aku mencintaimu lebih dari kata-kata yang tdak bisa diungkapkan. Semoga semua
-            impianmu menjadi kenyataan. Aku akan selalu ada di sisimu, mendukung
-            dan mencintaimu tanpa syarat. Happy birthday, my loveeee!, Makasih
-            yahh udah selalu ada buat akuuu, semoga kita selalu bersamaaa sampai
-            tuaa yaa sayanggkuu... I love you so muchhh!
-          </p>
-          <div class="mt-8 text-4xl floating-hearts">💖✨🌟</div>
-        </div>
-      </section>
-    </main>
-
-    <!-- Footer -->
-    <footer class="text-center py-12 glass-effect mt-16">
-      <p class="text-lg">Dibuat dengan ❤️ oleh Stoncuan macpal bawangun</p>
-      <p class="text-sm mt-2 opacity-80">© 2025 - Selamanya untukmu</p>
-    </footer>
+    <!-- Celebration Button -->
+    <button class="birthday-btn mt-6" onclick="createCelebration()">
+        Rayakan Sekarang! 🎉
+    </button>
 
     <script>
-      // Background Music Control
-      const bgMusic = document.getElementById("bgMusic");
-      let musicPlaying = false;
-
-      // Play music on user interaction
-      // document.addEventListener('click', function() {
-      //     if (!musicPlaying) {
-      //         bgMusic.volume = 0.3;
-      //         bgMusic.play().catch(e => console.log('Autoplay prevented:', e));
-      //         musicPlaying = true;
-      //     }
-      // });
-
-      // Create particles background
-      function createParticles() {
-        const particlesContainer = document.getElementById("particles");
-        const colors = [
-          "rgba(255,255,255,0.1)",
-          "rgba(255,107,107,0.1)",
-          "rgba(78,205,196,0.1)",
-          "rgba(69,183,209,0.1)",
-        ];
-
-        for (let i = 0; i < 50; i++) {
-          const particle = document.createElement("div");
-          particle.className = "particle";
-
-          const size = Math.random() * 20 + 5;
-          particle.style.width = size + "px";
-          particle.style.height = size + "px";
-          particle.style.left = Math.random() * 100 + "vw";
-          particle.style.animationDelay = Math.random() * 20 + "s";
-          particle.style.backgroundColor =
-            colors[Math.floor(Math.random() * colors.length)];
-          particle.style.animationDuration = Math.random() * 10 + 10 + "s";
-
-          particlesContainer.appendChild(particle);
-        }
-      }
-
-      // Create floating stars
-      function createStars() {
-        const starsContainer = document.getElementById("floating-stars");
-
-        for (let i = 0; i < 30; i++) {
-          const star = document.createElement("div");
-          star.className = "floating-star";
-
-          const size = Math.random() * 4 + 1;
-          star.style.width = size + "px";
-          star.style.height = size + "px";
-          star.style.left = Math.random() * 100 + "vw";
-          star.style.top = Math.random() * 100 + "vh";
-          star.style.animationDelay = Math.random() * 3 + "s";
-
-          starsContainer.appendChild(star);
-        }
-      }
-
-      // Create floating hearts background
-      function createFloatingHearts() {
-        const heartsContainer = document.getElementById("floating-hearts-bg");
-        const heartSymbols = ["❤️", "💖", "💕", "💓", "💗", "💘"];
-
-        for (let i = 0; i < 15; i++) {
-          const heart = document.createElement("div");
-          heart.className = "floating-heart-bg";
-
-          heart.style.left = Math.random() * 100 + "vw";
-          heart.style.animationDelay = Math.random() * 15 + "s";
-          heart.style.fontSize = Math.random() * 3 + 1 + "rem";
-          heart.innerHTML =
-            heartSymbols[Math.floor(Math.random() * heartSymbols.length)];
-
-          heartsContainer.appendChild(heart);
-        }
-      }
-
-      // Countdown Timer
-      function updateCountdown() {
-        const now = new Date();
-        let targetDate = new Date(
-          now.getFullYear(),
-          now.getMonth(),
-          now.getDate() + 1
-        );
-
-        const diff = targetDate - now;
-
-        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-        const hours = Math.floor(
-          (diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-        );
-        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-
-        document.getElementById("days").textContent = days
-          .toString()
-          .padStart(2, "0");
-        document.getElementById("hours").textContent = hours
-          .toString()
-          .padStart(2, "0");
-        document.getElementById("minutes").textContent = minutes
-          .toString()
-          .padStart(2, "0");
-        document.getElementById("seconds").textContent = seconds
-          .toString()
-          .padStart(2, "0");
-      }
-
-      setInterval(updateCountdown, 1000);
-      updateCountdown();
-
-      // Create floating hearts animation
-      function createHearts() {
-        for (let i = 0; i < 20; i++) {
-          setTimeout(() => {
-            const heart = document.createElement("div");
-            heart.className = "heart";
-            heart.style.left = Math.random() * 100 + "vw";
-            heart.style.animationDuration = Math.random() * 5 + 3 + "s";
-            heart.innerHTML = "❤️";
-            document.body.appendChild(heart);
-
-            setTimeout(() => {
-              heart.remove();
-            }, 8000);
-          }, i * 300);
-        }
-      }
-
-      // Create confetti
-      function createConfetti() {
-        const colors = [
-          "#ff6b6b",
-          "#4ecdc4",
-          "#45b7d1",
-          "#f9ca24",
-          "#f0932b",
-          "#eb4d4b",
-        ];
-        const container = document.getElementById("confetti-container");
-
-        for (let i = 0; i < 50; i++) {
-          const confetti = document.createElement("div");
-          confetti.className = "confetti";
-          confetti.style.left = Math.random() * 100 + "vw";
-          confetti.style.animationDuration = Math.random() * 3 + 2 + "s";
-          confetti.style.animationDelay = Math.random() * 2 + "s";
-          confetti.style.backgroundColor =
-            colors[Math.floor(Math.random() * colors.length)];
-          container.appendChild(confetti);
-
-          setTimeout(() => {
-            confetti.remove();
-          }, 5000);
-        }
-      }
-
-      // Initial animations
-      createParticles();
-      createStars();
-      createFloatingHearts();
-      createHearts();
-      createConfetti();
-
-      // Repeat animations
-      setInterval(createHearts, 10000);
-      setInterval(createConfetti, 15000);
-
-      // Random love messages on click
-      const loveMessages = [
-        "Aku mencintaimu lebih dari kata-kata bisa ungkapkan 💖",
-        "Kamu adalah alasan aku tersenyum setiap hari 😊",
-        "Setiap detik bersamamu adalah anugerah 🌟",
-        "Cintaku untukmu tumbuh lebih kuat setiap hari 🌹",
-        "Kamu adalah impian yang menjadi kenyataan ✨",
-        "Di mataku, kamu selalu yang paling cantik 💫",
-        "Terima kasih sudah menjadi dirimu yang luar biasa 🙏",
-      ];
-
-      document.addEventListener("click", function (e) {
-        if (e.target.tagName !== "BUTTON") {
-          const randomMsg =
-            loveMessages[Math.floor(Math.random() * loveMessages.length)];
-          const popup = document.createElement("div");
-          popup.className =
-            "fixed top-4 left-1/2 transform -translate-x-1/2 bg-white text-pink-600 px-6 py-3 rounded-full shadow-lg z-50 glass-effect";
-          popup.textContent = randomMsg;
-          popup.style.animation = "fadeInOut 3s ease-in-out";
-
-          document.body.appendChild(popup);
-
-          setTimeout(() => {
-            popup.remove();
-          }, 3000);
-        }
-      });
-
-      // Add fade animation
-      const style = document.createElement("style");
-      style.textContent = `
-            @keyframes fadeInOut {
-                0% { opacity: 0; transform: translate(-50%, -20px); }
-                20% { opacity: 1; transform: translate(-50%, 0); }
-                80% { opacity: 1; transform: translate(-50%, 0); }
-                100% { opacity: 0; transform: translate(-50%, -20px); }
-            }
+        // Slider functionality
+        const slider = document.getElementById('slider');
+        const buttons = document.querySelectorAll('.slider-btn');
+        let currentSlide = 0;
+        
+        function showSlide(index) {
+            if (index < 0) index = 10;
+            if (index > 10) index = 0;
             
-            .text-shadow {
-                text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-            }
+            slider.style.transform = `translateX(-${index * 100}%)`;
             
-            .drop-shadow-2xl {
-                filter: drop-shadow(0 25px 25px rgba(0, 0, 0, 0.3));
-            }
+            buttons.forEach((btn, i) => {
+                btn.classList.toggle('active', i === index);
+            });
             
-            .scale-102 {
-                transform: scale(1.02);
-            }
-        `;
-      document.head.appendChild(style);
-
-      // Mouse move effect
-      document.addEventListener("mousemove", function (e) {
-        const particles = document.querySelectorAll(".particle");
-        particles.forEach((particle) => {
-          const speed = parseFloat(particle.style.animationDuration);
-          particle.style.animationDuration = speed + e.movementX * 0.001 + "s";
+            currentSlide = index;
+        }
+        
+        // Auto slide
+        setInterval(() => {
+            showSlide(currentSlide + 1);
+        }, 4000);
+        
+        // Button controls
+        buttons.forEach((button, index) => {
+            button.addEventListener('click', () => {
+                showSlide(index);
+            });
         });
-      });
+        
+        // Particle effects
+        function createParticle(type) {
+            const container = document.getElementById('particle-container');
+            const particle = document.createElement('div');
+            
+            const size = Math.random() * 15 + 5;
+            const posX = Math.random() * window.innerWidth;
+            
+            particle.style.width = `${size}px`;
+            particle.style.height = `${size}px`;
+            particle.style.left = `${posX}px`;
+            
+            if (type === 'confetti') {
+                particle.className = 'confetti';
+                const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#f9c74f', '#f9844a'];
+                particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+                particle.style.animationDuration = `${Math.random() * 3 + 2}s`;
+            } else if (type === 'bubble') {
+                particle.className = 'bubble';
+                particle.style.animationDuration = `${Math.random() * 5 + 3}s`;
+                particle.style.animationDelay = `${Math.random() * 2}s`;
+            } else if (type === 'heart') {
+                particle.className = 'heart';
+                particle.innerHTML = '❤️';
+                particle.style.fontSize = `${size}px`;
+                particle.style.animationDuration = `${Math.random() * 4 + 3}s`;
+            }
+            
+            container.appendChild(particle);
+            
+            // Remove particle after animation
+            setTimeout(() => {
+                particle.remove();
+            }, 10000);
+        }
+        
+        // Celebration function
+        function createCelebration() {
+            // Create multiple particles
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    createParticle('confetti');
+                    if (i % 3 === 0) createParticle('bubble');
+                    if (i % 5 === 0) createParticle('heart');
+                }, i * 100);
+            }
+            
+            // Show celebration message
+            alert('🎊 SELAMAT ULANG TAHUN SAYANGKUU! 🎉\nSemoga selalu bahagia dan sukses AMINNN!');
+        }
+        
+        // Continuous gentle animation
+        setInterval(() => {
+            if (Math.random() < 0.3) createParticle('bubble');
+            if (Math.random() < 0.1) createParticle('heart');
+        }, 1000);
     </script>
-  </body>
+</body>
 </html>
+
